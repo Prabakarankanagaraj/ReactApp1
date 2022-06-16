@@ -29,6 +29,34 @@ export const executeCreating=(obj)=>{
     affect()
     
 }
+export const executeDeleting=(key)=>{
+    loading()
+    records=records.filter((ele,ind)=>{
+        return ele.sno!==key
+    })
+    affect()
+    alert(key+" has been terminated")
+}
+export const executeUpdating=(obj)=>{
+    loading()
+    for(var ind=0;ind<records.length;ind++)
+    {
+        if(records[ind].sno===obj.sno){
+        records[ind]=obj
+        affect()
+        return;
+        }      
+    }
+    alert("Invalid ID")
+    }
+export const executeReading=(key)=>{
+    loading()
+    for(var ind=0;ind<records.length;ind++){
+        if(records[ind].sno===key)
+            return records[ind]
+    }
+    return{}
+}
 export const executeListing=()=>{
     loading()
     //alert(records.length)
